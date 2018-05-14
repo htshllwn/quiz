@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/htshllwn/quiz/issues"
   },
-  "homepage": "https://github.com/htshllwn/quiz#readme"
+  "homepage": "https://github.com/htshllwn/quiz#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "node-color-log": "^2.0.2"
+  }
 }
