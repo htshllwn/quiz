@@ -1,1 +1,5 @@
 /* your styles go here */
+.alert-primary {
+    background: rgba(55, 147, 146, 0.95);
+    color: #fff;
+}

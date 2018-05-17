@@ -17,9 +17,13 @@
   },
   "homepage": "https://github.com/htshllwn/quiz#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
+    "connect-flash": "^0.1.1",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
+    "mongoose": "^5.1.1",
     "node-color-log": "^2.0.2"
   }
 }

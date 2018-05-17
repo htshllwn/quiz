@@ -18,5 +18,8 @@ module.exports = {
     },
     WARN: function(text){
         logger.warn(`${text}`);
-    }
+    },
+    SERVER: function(text){
+        logger.color('blue').bgColor('white').bold().underscore().reverse().log(text);
+    },
 }

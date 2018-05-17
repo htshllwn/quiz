@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const logger = require('node-color-log');
+const logger = require('../helpers/logger');
 
 router.get('/', (req, res) => {
-    logger.color('blue').log('Requested / ');
+    logger.GET('/ ');
     res.render('users/login');
 });
 
