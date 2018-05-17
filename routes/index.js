@@ -4,7 +4,7 @@ const logger = require('node-color-log');
 
 router.get('/', (req, res) => {
     logger.color('blue').log('Requested / ');
-    res.render('index/home');
+    res.render('users/login');
 });
 
 module.exports = router;
