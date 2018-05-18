@@ -8,6 +8,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const flash = require('connect-flash');
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
 
 // Load Keys
 const keys = require('./config/keys');
@@ -61,6 +62,9 @@ const users = require('./routes/users');
 // Create app
 const app = express();
 
+// Passport Config
+require('./config/passport')(passport);
+
 // Handlebars Middleware
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
@@ -78,6 +82,10 @@ app.use(session({
     resave: true,
     saveUninitialized: true
 }));
+
+// Passort middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Connect Flash Middleware
 app.use(flash());
