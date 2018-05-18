@@ -7,14 +7,50 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const session = require('express-session');
 const flash = require('connect-flash');
+const bcrypt = require('bcryptjs');
 
 // Load Keys
 const keys = require('./config/keys');
+
+// Load Models
+require('./models/User');
+const User = mongoose.model('users');
 
 // Mongoose connect
 mongoose.connect(keys.mongoURI)
     .then( () => {
         logger.SERVER(`MongoDB Connected`);
+        User.findOne({role: 'admin'})
+            .then((user) => {
+                if(user){
+                    logger.INFO('Admin Present');
+                }
+                else{
+                    const newUser = new User({
+                        firstName: 'Admin',
+                        lastName: 'CynQuiz',
+                        username: 'admin',
+                        email: 'admin@cynquiz.com',
+                        role: 'admin',
+                        password: keys.adminPassword,
+                    });
+
+                    bcrypt.genSalt(10, (err, salt) => {
+                        bcrypt.hash(newUser.password, salt, (err,hash) => {
+                            if(err) throw err;
+                            newUser.password = hash;
+                            newUser.save()
+                                .then(user => {
+                                    logger.INFO('Admin Created');
+                                })
+                                .catch(err => {
+                                    console.log(err);
+                                    return;
+                                });
+                        })
+                    });
+                } 
+            })
     })
     .catch( err => console.log(err));
 
