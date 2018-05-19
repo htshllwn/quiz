@@ -13,6 +13,9 @@ const passport = require('passport');
 // Load Keys
 const keys = require('./config/keys');
 
+// HandleBars helpers
+const hbsHelper = require('./helpers/hbs');
+
 // Load Models
 require('./models/User');
 const User = mongoose.model('users');
@@ -66,7 +69,12 @@ const app = express();
 require('./config/passport')(passport);
 
 // Handlebars Middleware
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.engine('handlebars', exphbs({
+    helpers: {
+        compare: hbsHelper.compare,
+    },
+    defaultLayout: 'main'
+}));
 app.set('view engine', 'handlebars');
 
 // Body Parser Middleware

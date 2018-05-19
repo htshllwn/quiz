@@ -27,10 +27,21 @@
 
 </head>
 <body>
+    {{#if header}}
+        {{> _header}}
+        <div class="d-flex align-items-stretch">
+        {{> _sidebar}}
+        <div class="page-content">
+    {{else}}
+        <div class="login-page">
+        <div class="container d-flex align-items-center">
+    {{/if}}
 
     {{> _msg}}
     {{{body}}}
 
+        </div>
+        </div>
     {{> _jsFiles}}
 </body>
 </html>
