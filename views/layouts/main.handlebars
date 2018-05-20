@@ -32,6 +32,8 @@
         <div class="d-flex align-items-stretch">
         {{> _sidebar}}
         <div class="page-content">
+            {{> _pageHeader}}
+            {{> _breadcrumbs}}
     {{else}}
         <div class="login-page">
         <div class="container d-flex align-items-center">
@@ -40,6 +42,10 @@
     {{> _msg}}
     {{{body}}}
 
+    {{#if header}}
+        {{> _footer}}
+    {{/if}}
+    
         </div>
         </div>
     {{> _jsFiles}}

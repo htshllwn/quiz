@@ -18,7 +18,8 @@ router.get('/', (req, res) => {
 router.get('/dashboard', ensureAuthenticated, (req, res) => {
     logger.GET('/dashboard');
     res.render('index/dashboard',{
-        header: true
+        header: true,
+        pageHeader: 'dashboard',
     });
 });
 

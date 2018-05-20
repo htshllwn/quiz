@@ -61,6 +61,7 @@ mongoose.connect(keys.mongoURI)
 // Load routes
 const index = require('./routes/index');
 const users = require('./routes/users');
+const admin = require('./routes/admin');
 
 // Create app
 const app = express();
@@ -111,6 +112,7 @@ app.use(function(req, res, next){
 // Use Routes
 app.use('/', index);
 app.use('/users', users);
+app.use('/admin', admin);
 
 // Default Route
 app.use((req,res) => {

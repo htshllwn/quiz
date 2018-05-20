@@ -1,7 +1,7 @@
 <nav id="sidebar">
         <!-- Sidebar Header-->
         <div class="sidebar-header d-flex align-items-center">
-          <div class="avatar"><img src="img/avatar-6.jpg" alt="..." class="img-fluid rounded-circle"></div>
+          <div class="avatar"><img src="/img/avatar-6.jpg" alt="..." class="img-fluid rounded-circle"></div>
           <div class="title">
             <h1 class="h5">{{user.firstName}} {{user.lastName}}</h1>
             <p>{{user.role}}</p>
@@ -9,11 +9,16 @@
         </div>
         <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
         <ul class="list-unstyled">
-                <li><a href="/home"> <i class="icon-home"></i>Home </a></li>
+                <li><a href="/"> <i class="icon-home"></i>Home </a></li>
                 {{#compare user.role 'admin'}}
-                  <li><a href="#"> <i class="icon-grid"></i>Teachers </a></li>
-                  <li><a href="#"> <i class="icon-grid"></i>Students </a></li>
-                  <li><a href="#"> <i class="icon-grid"></i>Problems </a></li>
+                  <li><a href="#teachersDD" aria-expanded="false" data-toggle="collapse"> <i class="icon-writing-whiteboard"></i>Teachers </a>
+                    <ul id="teachersDD" class="collapse list-unstyled ">
+                      <li><a href="/admin/teachers">View</a></li>
+                      <li><a href="/admin/teachers/add">Add</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#"> <i class="icon-user-outline"></i>Students </a></li>
+                  <li><a href="#"> <i class="icon-list-1"></i>Questions </a></li>
                 {{/compare}}
                 {{#compare user.role 'teacher'}}
                   <li><a href="#"> <i class="icon-grid"></i>Tables </a></li>
