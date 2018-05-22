@@ -37,6 +37,7 @@ mongoose.connect(keys.mongoURI)
                         email: 'admin@cynquiz.com',
                         role: 'admin',
                         password: keys.adminPassword,
+                        statusVerified: true
                     });
 
                     bcrypt.genSalt(10, (err, salt) => {

@@ -13,8 +13,9 @@
                           <th>First Name</th>
                           <th>Last Name</th>
                           <th>Username</th>
+                          <th>Email</th>
                           <th>Status</th>
-                          <th># of Ques</th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -23,14 +24,18 @@
                             <td>{{firstName}}</td>
                             <td>{{lastName}}</td>
                             <td>{{username}}</td>
-                            
+                            <td>{{email}}</td>
                             {{#if statusVerified}}
                             <td>Verified</td>  
                             {{else}}
                             <td style="color:red">Not Verified</td>
                             {{/if}}
 
-                            <th>1</th>
+                            <th>
+                              <form action="/admin/teachers/verify/{{_id}}" method="post">
+                                <button type="submit" class="btn btn-secondary">Verify</button>
+                              </form>                                  
+                            </th>
                           </tr>
                         {{/each}}  
                       </tbody>
@@ -39,12 +44,8 @@
                 </div>
 
               {{else}}
-                <p><h3>No teachers registered</h3></p>
+                <p><h3>No teachers to verify</h3></p>
               {{/if}}
-              
-            
-
-
             </div>
         </div>
     </div>

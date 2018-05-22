@@ -19,6 +19,9 @@ module.exports = function(passport){
             if(!user){
                 return done(null, false, {message: 'No User Found'});
             }
+            if(!user.statusVerified){
+                return done(null, false, {message: 'Your account is not yet verified'});
+            }
 
             // Match Password
             bcrypt.compare(password, user.password, (err, isMatch) => {

@@ -27,6 +27,10 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+    statusVerified: {
+        type: Boolean,
+        required: true
+    }
 });
 
 // Create collection and add schema

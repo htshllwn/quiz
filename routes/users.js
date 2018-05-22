@@ -36,7 +36,7 @@ router.get('/register', (req, res) => {
 // Process Register Form
 router.post('/register', (req, res) => {
     logger.POST('/users/register');
-    // console.log(req.body);
+    console.log(req.body);
 
     let errors = [];
     
@@ -78,9 +78,16 @@ router.post('/register', (req, res) => {
                     lastName: req.body.registerLastname,
                     username: req.body.registerUsername,
                     email: req.body.registerEmail,
-                    role: 'student',
+                    role: req.body.registerRole,
                     password: req.body.registerPassword,
                 });
+
+                if(newUser.role == 'student'){
+                    newUser.statusVerified = true;
+                }
+                else{
+                    newUser.statusVerified = false;
+                }
 
                 bcrypt.genSalt(10, (err, salt) => {
                     bcrypt.hash(newUser.password, salt, (err,hash) => {
