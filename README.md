@@ -1,2 +1,2 @@
 # quiz
-A simple MCQ based quiz app built on Node.js
+A simple MCQ based quiz application built on Node.js
